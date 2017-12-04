@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor() {
+    window.addEventListener("message", this.recevedTokenMessage, false);
+  }
+
+  public recevedTokenMessage(event){
+    debugger;
+  }
 }
+
+
