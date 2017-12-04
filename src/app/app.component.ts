@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,14 @@ import { Component, HostListener } from '@angular/core';
 export class AppComponent {
   title = 'app';
 
-  constructor() {
+  constructor(private _auth: AuthService, ) {
     parent.postMessage({loaded: true}, "*");
   }
 
   @HostListener('window:message', ['$event'])
   public onAppLoaded({origin, data}: any) {
     if (data.cmd && data.cmd == "token"){
-      console.log(data.token);
+      this._auth.setSession(data.token);
     }
   }
 

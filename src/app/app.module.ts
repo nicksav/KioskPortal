@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AuthModule } from './auth/auth.module'
+import { ApiModule } from './api/api.module'
+
 
 import { AppComponent } from './app.component';
 
@@ -10,9 +13,12 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ApiModule
   ],
-  providers: [],
+  providers: [
+    AuthModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
