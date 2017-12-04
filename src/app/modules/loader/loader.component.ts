@@ -14,7 +14,7 @@ export class LoaderComponent implements OnInit {
     constructor(
     private _auth: AuthService, 
     private _router: Router) {
-        parent.postMessage({loaded: true}, "*");
+
     }
 
     @HostListener('window:message', ['$event'])
@@ -26,7 +26,11 @@ export class LoaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log("loaded loader component");
+
+        if (!this._auth.isAuthenticated())
+            parent.postMessage({loaded: true}, "*");
+        else 
+            this._router.navigate(['/kiosks']);
     }
 
 }

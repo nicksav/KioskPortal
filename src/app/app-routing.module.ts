@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component'
+import { LoaderComponent } from '../app/modules/loader/loader.component'
 
 const routes: Routes = [
   { 
     path: '',
-    loadChildren: 'app/modules/loader/loader.module#LoaderModule'
+    loadChildren: 'app/modules/loader/loader.module#LoaderModule',
+    pathMatch: 'full'
   },
   {
     path: 'kiosks',
     loadChildren: 'app/modules/kiosks/kiosks.module#KiosksModule'
-  }
-];
+  },
+  {
+    path: '**',
+    loadChildren: 'app/modules/loader/loader.module#LoaderModule'
+  }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -13,7 +13,7 @@ export class AclService {
     let jwtHelper: JwtHelper = new JwtHelper();  
     let decodedToken = jwtHelper.decodeToken(this._auth.getToken());
     let claims = decodedToken[environment.permissionClaims];
-    
+
     return claims || [];
   }
 

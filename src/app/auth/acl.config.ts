@@ -1,6 +1,7 @@
 export const aclConfig = {
     routes: {
-      '/': '"canSeeFormType"'
+      '/': 'canSeeFormType',
+      '/kiosks': 'canSeeFormType',
     }
   };
   

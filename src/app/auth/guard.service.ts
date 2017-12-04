@@ -16,7 +16,8 @@ export class Guard implements CanActivate {
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const url: string = state.url;
     const key = this._acl.getKeyByUrl(url);
-    return this.checkLogin(url) && this._checkAccess(key);
+    var result = this.checkLogin(url) && this._checkAccess(key)
+    return result;
   }
 
   public canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
