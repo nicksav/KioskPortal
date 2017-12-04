@@ -30,7 +30,10 @@ export class AuthService implements CanActivate {
     public isAuthenticated(): boolean {
         let jwtHelper: JwtHelper = new JwtHelper();  
         const token = this.getToken();
-        return !jwtHelper.isTokenExpired(token);
+        if (token == null)
+            return false;
+        else 
+            return !jwtHelper.isTokenExpired(token);
     }
 
     public fetchKioskProfile() {
