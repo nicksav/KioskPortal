@@ -14,7 +14,7 @@ export class AppComponent {
     parserUrl.href = window.location.href;
     let origin = `${parserUrl.protocol}//${parserUrl.host}`;
     window.addEventListener("message", this.recevedTokenMessage, false);
-    parent.postMessage({loaded: true}, origin);
+    parent.postMessage({loaded: true}, "*");
   }
 
   public recevedTokenMessage(event){
