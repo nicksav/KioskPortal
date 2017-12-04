@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'kiosks',
     loadChildren: 'app/modules/kiosks/kiosks.module#KiosksModule'
   }
 ];

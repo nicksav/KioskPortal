@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,9 @@ import { AuthService } from './auth/auth.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(private _auth: AuthService, ) {
+  constructor(
+    private _auth: AuthService, 
+    private _router: Router) {
     parent.postMessage({loaded: true}, "*");
   }
 
@@ -17,6 +20,7 @@ export class AppComponent {
   public onAppLoaded({origin, data}: any) {
     if (data.cmd && data.cmd == "token"){
       this._auth.setSession(data.token);
+      this._router.navigate(['/kiosks']);
     }
   }
 

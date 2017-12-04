@@ -20,7 +20,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     AuthModule,
     LocalStorageModule.withConfig({
-      prefix: 'kiosk-app',
+      prefix: 'kioskportal-app',
       storageType: 'localStorage'
     })
   ],
