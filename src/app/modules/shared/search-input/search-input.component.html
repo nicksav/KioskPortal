@@ -1,0 +1,8 @@
+<input #searchBox
+       class="form-control search-input"
+       type="text"
+       i18n-title
+       title="Search"
+       [(ngModel)]="ngModel"
+       (ngModelChange)="search($event)" required/>
+<div class="placeholder"><i class="icon-search"></i> <ng-container i18n>Search...</ng-container></div>

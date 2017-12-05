@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { KioskMapper } from './mappers/kiosk.mapper';
 
@@ -15,6 +15,12 @@ export class KioskService {
   public getCallToken(){
     return this._http.get('/Kiosks/twillio/token')
     .map((res) => KioskMapper.prepareData(res));
+  }
+
+  public getList(params = new HttpParams()) {
+    return this._http
+      .get(`/Kiosks`, { params })
+      .map((res) => KioskMapper.prepareListData(res));
   }
 
 

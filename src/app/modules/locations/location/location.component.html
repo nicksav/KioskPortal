@@ -1,0 +1,47 @@
+<section class="card">
+        <div class="card-header">
+            <span class="cat__core__title">
+                <a [routerLink]="'../'">
+                  <i class="icon-chevron-left" style="font-weight:bold;"></i>
+                  <ng-container i18n>Locations</ng-container>&nbsp;|&nbsp;
+                </a>
+            </span>
+            <span class="cat__core__title">
+              {{selectedLocation?.name}}
+            </span>
+            <div *ngIf="acl.isAllow('canUseKiosk')" class="d-inline-block pull-right">
+                <a class="btn btn-sm btn-success" *ngIf="!(editMode | async)" (click)="editMode=true" i18n>Edit</a>
+                <a class="btn btn-sm btn-success" *ngIf="editMode | async" (click)="save()" [ladda]="isLoading" i18n>Save</a>
+            </div>
+        </div>
+      
+        <div class="card-block">
+          <div class="detailsHeader">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="form-label" i18n>Location Name</label>
+                  <input value="{{selectedLocation?.name}}" class="form-control" disabled>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="form-label" i18n>Location Key</label>
+                  <input value="{{selectedLocation?.locationKey}}" class="form-control" disabled>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="detailsBody nav-tabs-horizontal">
+            <ul class="nav nav-tabs justify-content-start" >
+              <li class="nav-item"><a class="nav-link active" [ngClass]="{'active': tab==='kiosks'}" (click)="tab = 'users'" i18n>Users</a></li>
+            </ul>
+          </div>
+          <div class="tContent" [ngSwitch]="tab" *ngIf="selectedLocation">
+
+          </div>
+      
+        </div>
+      </section>
+      

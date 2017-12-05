@@ -439,3 +439,230 @@ h1,h2,h3,h4,h5,h6,h7,.mat-button, .mat-fab, .mat-icon-button, .mat-mini-fab, .ma
     font-size: 1.5rem;
     color: #393749;
 }
+
+.card{
+    border-top:none;
+    background: none !important;
+}
+
+/* MODAL */
+.modal .modal-content {
+    border: none;
+}
+
+.modal .modal-header .close {
+    outline: none !important;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    line-height: 30px;
+    text-align: center;
+}
+
+.modal .modal-header .close span {
+    position: relative;
+    top: 3px;
+}
+
+.modal.modal-size-small {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.modal.modal-size-small .modal-dialog {
+    max-width: 300px;
+    width: auto;
+}
+
+@media (max-width: 543px) {
+    .modal.modal-size-small .modal-dialog {
+        max-width: none;
+    }
+}
+
+.modal.modal-size-large {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.modal.modal-size-large .modal-dialog {
+    max-width: 980px;
+    width: auto;
+}
+
+.modal-backdrop {
+    background: #0e0b20;
+}
+
+.modal-backdrop.in {
+    opacity: .3;
+}
+
+.form-group.header-input {
+    margin-bottom: 0;
+    margin-right: auto;
+    margin-left: 4px;
+}
+
+.form-group.header-input .form-control {
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.form-group.header-input .form-control-error {
+    right: auto;
+    left: 0;
+    bottom: 30px;
+}
+
+.form-group.header-input .form-control-error::after {
+    right: auto;
+    left: 20px;
+}
+
+
+/*  FORM VALIDATION */
+.form-group {
+    position: relative;
+}
+
+.form-control-error {
+    background: #fb434a;
+    padding: 5px 8px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    position: absolute;
+    right: 0;
+    bottom: 37px;
+    margin-bottom: 8px;
+    max-width: 230px;
+    font-size: 80%;
+    z-index: 1;
+}
+
+.form-control-error:after {
+    width: 0px;
+    height: 0px;
+    content: '';
+    display: block;
+    border-style: solid;
+    border-width: 5px 5px 0;
+    border-color: #fb434a transparent transparent;
+    position: absolute;
+    right: 20px;
+    bottom: -4px;
+    margin-left: -5px;
+}
+
+.form-control-error ul {
+    list-style: none;
+    color: #ffffff;
+    padding: 0px;
+    margin: 0px;
+}
+
+.form-control-error-list ul {
+    list-style: none;
+    color: #fb434a;
+    padding: 0px;
+    margin: 5px 0px 0px 0px;
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.has-danger .select2-selection--single, .has-danger .select2-selection--multiple {
+    border-color: #fb434a !important;
+}
+
+
+
+/* PAGINATION */
+.pagination {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .pagination .page-item {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  
+  .pagination .page-link {
+    border: none !important;
+    background-color: transparent;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    color: #444;
+    outline: none;
+  
+  
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    padding: 0;
+    line-height: 2rem;
+  }
+  
+  .pagination .page-link:hover, 
+  .pagination .page-link:focus {
+    background: transparent;
+    color: #000;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background: #313A40;
+    color: #fff;
+    transition: none;
+  }
+  
+  .pagination .page-item.disabled .page-link {
+    color: #999;
+    background-color: transparent;
+    opacity: .5;
+  }
+  
+  .pagination .page-link[aria-label="Previous"] span,
+  .pagination .page-link[aria-label="Next"] span {
+    display: none !important;
+  }
+  
+  .pagination .page-link[aria-label="Previous"],
+  .pagination .page-link[aria-label="Next"] {
+    width: 2.3rem;
+    height: 2.3rem;
+    line-height: 2.3rem;
+    text-align: center;
+    border: 1px solid #ccc !important;
+    border-radius: 3px !important;
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: bolder;
+    font-variant: normal;
+    text-transform: none;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .pagination .page-link[aria-label="Previous"]:before {
+    content: "\ec96";
+  }
+  
+  .pagination .page-link[aria-label="Next"]:before {
+    content: "\ec9a";
+  }
+  
+  .search-input {
+    max-width: 150px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    display: inline;
+    padding: 0;
+    border: none;
+  }

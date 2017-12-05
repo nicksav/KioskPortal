@@ -1,0 +1,61 @@
+<section class="card" *ngIf="!selectedRole">
+        <div class="card-header">
+            <span class="cat__core__title">
+              <a  i18n>Locations</a>
+              <a> | </a>
+            </span>
+          <search-input (ngModelChange)="searchText = $event" [(ngModel)]="searchText" ngDefaultControl></search-input>
+          <div class="pull-right">
+              <a class="btn btn-sm btn-success" (click)="onRoleCreate()" href="javascript: void(0);">
+                <ng-container i18n>Add</ng-container>
+                <span class="hidden-sm-down" i18n>Location</span><i style="vertical-align:middle;" class="icon-plus-ui ml-2"></i></a>
+           </div>
+        </div>
+        <div class="card-block pt-0">
+          <location-grid #locationGrid [searchText]="searchText" (selectRow)="onSelectRow($event);"></location-grid>
+        </div>
+      </section>
+      
+      <router-outlet></router-outlet>
+      
+      <ng-template #createModal let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">{{modalOptions.title}}</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ng-container *ngTemplateOutlet="formLocationTemplate"></ng-container>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="d('Close click')" i18n>Cancel</button>
+          <button type="button" class="btn btn-success" [ladda]="isLoading" [disabled]="form.invalid" (click)="submitForm()">
+            {{modalOptions.successButton}}
+          </button>
+        </div>
+      </ng-template>
+      
+      <ng-template #formLocationTemplate>
+        <form [formGroup]="form" name="form">
+          <div class="form-group">
+            <label for="name" class="form-label" i18n>Location Name</label>
+            <input class="form-control" id="name" formControlName="name">
+            <div class="form-control-error" *ngIf="form.get('name').dirty && !form.get('name').valid">
+              <ul>
+                <li *ngIf="form.get('name').hasError('required')" i18n>Field is required</li>
+              </ul>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="locationKey" class="form-label" i18n>Location Key</label>
+            <input class="form-control" id="locationKey" formControlName="locationKey">
+            <div class="form-control-error" *ngIf="form.get('locationKey').dirty && !form.get('locationKey').valid">
+              <ul>
+                <li *ngIf="form.get('locationKey').hasError('required')" i18n>Field is required</li>
+              </ul>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+      

@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://dataservice4kiosk.azurewebsites.net/api/v1',
+  baseUrl: 'https://kioskbackend.azurewebsites.net/api/v1',
   permissionClaims:'https://digital-dealers.com/permissions'
 };

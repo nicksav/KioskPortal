@@ -1,0 +1,52 @@
+<div class="dp-custom-grid table-responsive" [style.margin-right]="getStyle()">
+  <table *ngIf="settings && settings.columns && settings.columns.length" class="table table-hover ddTable">
+    <thead>
+    <tr>
+      <th *ngFor="let column of settings.columns">
+        <a href="javascript:void(0)">{{column.title}}</a>
+      </th>
+      <th
+          class="head-actions"
+          *ngIf="settings && settings.showActions">
+      </th>
+    </tr>
+
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let row of rows"
+        (click)="onSelectRow(row)"
+        [class.selected]="row.selected" placement="top" container="body" [ngbTooltip]="settings.tooltip(row)">
+
+      <td *ngFor="let column of settings.columns">{{row[column.key]}}</td>
+
+      <td class="cell-actions">
+        <div *ngIf="settings.showActions" class="actions">
+          <a href="javascript:void(0)" *ngFor="let action of settings.actions; first as isFirst"
+             (click)="onActionClick($event, row, action, settings.disableAction(row, action))"
+             [class.disabled]="settings.disableAction(row, action)"
+             [style.display]="settings.hideAction(row, action)?'none':''">
+            <span><i [ngClass]="action.name"></i></span>
+          </a>
+        </div>
+    </td>
+  </tr>
+    <tr *ngIf="!source?.length">
+      <td [attr.colspan]="colCount" i18n>No data found</td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div class="d-flex justify-content-center">
+    <ngb-pagination
+    *ngIf="collectionSize > limit"
+    [(page)]="currentPage"
+    [collectionSize]="collectionSize"
+    [maxSize]="5" 
+    [rotate]="true" 
+    [ellipses]="true" 
+    [boundaryLinks]="false"
+    (pageChange)="onPageChange($event)"></ngb-pagination>
+</div>

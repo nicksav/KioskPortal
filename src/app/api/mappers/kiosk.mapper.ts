@@ -5,11 +5,12 @@ export class KioskMapper {
     }
 
     public static prepareListData(res) {
-        for (let index in res) {
-          if (res.hasOwnProperty(index)) {
-            res[index] = KioskMapper.prepareData(res[index]);
-          }
+        let result = [];
+        let {total, data} = res;
+    
+        for (let item of data) {
+          result.push(KioskMapper.prepareData(item));
         }
-        return res
+        return {total, data: result};
       }
 }

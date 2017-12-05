@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: 'kiosks',
     loadChildren: 'app/modules/kiosks/kiosks.module#KiosksModule'
+  },  
+  {
+    path: 'locations',
+    loadChildren: 'app/modules/locations/locations.module#LocationsModule'
   },
   {
     path: '**',

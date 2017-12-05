@@ -1,0 +1,47 @@
+<dp-table
+[page]="currentPage"
+[settings]="settings"
+[source]="locations"
+[collectionSize]="collectionSize"
+(actionClicked)="onActionClick($event)"
+(selectRow)="onSelectRow($event)"
+(pageChange)="onPageChange($event)"></dp-table>
+
+<ng-template #deleteConfirmModal let-c="close" let-d="dismiss">
+<div class="modal-header">
+<h4 class="modal-title" i18n>Delete Location</h4>
+<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body" i18n>
+Are you sure you want to delete this item?
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" (click)="d('Close click')" i18n>Cancel</button>
+<button type="button" class="btn btn-danger" [ladda]="isLoading" (click)="onDelete()" i18n>Delete</button>
+</div>
+</ng-template>
+
+<ng-template #formTemplate>
+<form [formGroup]="form" name="form">
+<div class="form-group">
+  <label for="name" class="form-label" i18n>Location Name</label>
+  <input class="form-control" id="name" formControlName="name">
+  <div class="form-control-error" *ngIf="form.get('name').dirty && !form.get('name').valid">
+    <ul>
+      <li *ngIf="form.get('name').hasError('required')" i18n>Field is required</li>
+    </ul>
+  </div>
+</div>
+<div class="form-group">
+  <label for="locationKey" class="form-label" i18n>Location Key</label>
+  <input class="form-control" id="locationKey" formControlName="locationKey">
+  <div class="form-control-error" *ngIf="form.get('locationKey').dirty && !form.get('locationKey').valid">
+    <ul>
+      <li *ngIf="form.get('locationKey').hasError('required')" i18n>Field is required</li>
+    </ul>
+  </div>
+</div>
+</form>
+</ng-template>

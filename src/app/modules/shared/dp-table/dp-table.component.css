@@ -1,0 +1,127 @@
+:host {
+  position: relative;
+  display: block;
+}
+
+:host /deep/ .dp-custom-grid .selected {
+  background: rgba(0, 0, 0, .05) !important;
+}
+
+:host .dp-custom-grid {
+  width: auto;
+}
+
+:host .dp-custom-grid table {
+  border-collapse: separate;
+  border-spacing: 0 0.8em;
+  border: none;
+  width: 100%;
+}
+
+:host .dp-custom-grid table tr th {
+  font-size: 1em;
+  border: none;
+  padding: 0 1em;
+  font-weight: normal;
+  background: #eaeaea;
+  white-space: nowrap;
+}
+
+:host .dp-custom-grid table tr td {
+  font-size: 1em;
+  border: none;
+  padding: .9em 1em;
+  background-color: transparent;
+  position: relative;
+  white-space: nowrap;
+}
+
+:host .dp-custom-grid table tr {
+  background-color: white;
+}
+:host .dp-custom-grid table tbody tr:hover td:first-child,
+:host .dp-custom-grid table tbody .selected td:first-child {
+  box-shadow: 3px 0 #e4bf05 inset;
+}
+
+:host .dp-custom-grid table tbody tr:hover {
+  cursor: pointer;
+}
+
+:host a {
+  color: #0275d8;
+}
+
+:host .grid-row-container {
+  width: 100%;
+}
+
+:host .head-actions {
+  width: auto;
+  position: absolute !important;
+  left: calc(100% - 4rem * attr(data-actions));
+}
+
+:host .cell-actions {
+  position: absolute !important;
+  right: 0;
+  padding: 0 !important;
+  
+}
+
+:host .actions { 
+  line-height: 0;
+  display: flex;
+}
+
+/* :host .dp-custom-grid table tbody tr:hover .actions > a:not(.disabled){
+  background-color: rgba(0, 0, 0, .05);
+} */
+
+:host .actions > a {
+  display: block;
+  position: relative;
+  padding: 0.9em;
+  outline: none;
+  background-color: #fff;
+  border-left: 0.8rem solid #eaeaea;
+}
+
+:host .actions > a > span {
+  position: relative;
+  z-index: 1;
+}
+
+:host .actions > a:not(.disabled):hover {
+  color: #000;
+}
+
+:host .actions > a:before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 0.8rem;
+  background: #eaeaea;
+  left: -0.8rem;
+  z-index: 2;
+}
+
+:host .actions > a:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  left: 0;
+  background: #fff;
+  width: 100%;
+}
+
+:host .actions > a i {
+  font-size: 1.4rem;
+}
+
+:host .actions > a.disabled {
+  opacity: 0.62;
+}
+

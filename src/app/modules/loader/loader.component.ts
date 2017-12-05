@@ -21,7 +21,7 @@ export class LoaderComponent implements OnInit {
     public onAppLoaded({origin, data}: any) {
         if (data.cmd && data.cmd == "token"){
             this._auth.setSession(data.token);
-            this._router.navigate(['/kiosks']);
+            this._router.navigate(['/locations']);
         }
     }
 
@@ -30,7 +30,7 @@ export class LoaderComponent implements OnInit {
         if (!this._auth.isAuthenticated())
             parent.postMessage({loaded: true}, "*");
         else 
-            this._router.navigate(['/kiosks']);
+            this._router.navigate(['/locations']);
         
     }
 

@@ -6,9 +6,10 @@ import { ApiModule } from './api/api.module'
 import { AppRoutingModule } from './app-routing.module';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,8 @@ import { AppComponent } from './app.component';
     ApiModule,
     AppRoutingModule,
     AuthModule,
+    SharedModule,
+    NgbModule.forRoot(),
     LocalStorageModule.withConfig({
       prefix: 'kioskportal-app',
       storageType: 'localStorage'
