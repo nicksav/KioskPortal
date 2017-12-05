@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LaddaModule } from 'angular2-ladda';
 
 import { LocationsComponent } from './locations.component';
+import { LocationComponent } from './location/location.component';
 import { routes } from './locations.routing';
 import { LocationObserverService } from './location/location-observer.service';
 import { LocationGridComponent } from './grid/location-grid.component';
@@ -26,7 +27,8 @@ import { SharedModule } from '../shared/shared.module';
   exports: [],
   declarations: [
     LocationsComponent,
-    LocationGridComponent
+    LocationGridComponent,
+    LocationComponent
   ],
   providers: [
     LocationObserverService

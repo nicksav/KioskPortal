@@ -10,10 +10,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'kiosks',
-    loadChildren: 'app/modules/kiosks/kiosks.module#KiosksModule'
-  },  
-  {
     path: 'locations',
     loadChildren: 'app/modules/locations/locations.module#LocationsModule'
   },
