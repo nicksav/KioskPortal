@@ -11,6 +11,9 @@
                 <span class="hidden-sm-down" i18n>Location</span><i style="vertical-align:middle;" class="icon-plus-ui ml-2"></i></a>
            </div>
         </div>
+        <div class="progress-view">
+          <progress-bar class="full-width" *ngIf="locationGrid.isSearching"></progress-bar>
+        </div>
         <div class="card-block pt-0">
           <location-grid #locationGrid [searchText]="searchText" (selectRow)="onSelectRow($event);"></location-grid>
         </div>

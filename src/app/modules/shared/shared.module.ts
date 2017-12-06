@@ -5,7 +5,7 @@ import { LaddaModule } from 'angular2-ladda';
 
 import { DpTableModule } from './dp-table';
 import { SearchInputComponent } from './search-input/search-input.component';
-
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
   providers: [],
@@ -18,11 +18,13 @@ import { SearchInputComponent } from './search-input/search-input.component';
     LaddaModule
   ],
   declarations: [
-    SearchInputComponent
+    SearchInputComponent,
+    ProgressBarComponent
   ],
   exports: [
     DpTableModule,
-    SearchInputComponent
+    SearchInputComponent,
+    ProgressBarComponent
   ]
 })
 

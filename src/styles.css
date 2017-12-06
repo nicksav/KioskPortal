@@ -675,3 +675,7 @@ h1,h2,h3,h4,h5,h6,h7,.mat-button, .mat-fab, .mat-icon-button, .mat-mini-fab, .ma
     background-color: #fff;
     border-left: .8rem solid #eaeaea;
 }
+
+.progress .indeterminate {
+    background-color: #e4bf05 !important;
+}
