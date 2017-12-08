@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-lg-12">
+      <dp-table class="table-responsive"
+                [page]="currentPage"
+                [settings]="settings"
+                [source]="kiosks"
+                [collectionSize]="collectionSize"
+                (actionClicked)="onActionClick($event)"
+                (pageChange)="onPageChange($event)"></dp-table>
+  
+      <div class="d-inline-block pull-right">
+        <a class="btn btn-sm btn-success ml-2 d-flex align-items-center" *ngIf="editMode|async" (click)="onLink()">
+          <ng-container i18n>Link Kiosk</ng-container>
+          <i class="icon-plus-ui ml-2"></i></a>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #unlinkConfirmModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" i18n>Unlink Kiosk from Location</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" i18n>
+      Are you sure you want to unlink this kiosk?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="d('Close click')" i18n>Cancel</button>
+      <button type="button" class="btn btn-danger" [ladda]="isLoading" (click)="unlinkKiosk()" i18n>Unlink</button>
+    </div>
+  </ng-template>
+  
+  <ng-template #linkModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">{{modalOptions.title}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form" name="form">
+        <div class="form-group">
+          <label for="kioskId" class="form-label" i18n>Select Kiosk</label>
+          <dp-select
+            id="kioskId"
+            [active]="form.get('id').value"
+            (search)="searchKiosks($event)"
+            (selectItem)="onSelectItem($event)"
+            [config]="{key: 'id', value: 'name'}"
+            [remoteDataSource]="true"
+            [items]="allKiosks"></dp-select>
+          <div class="form-control-error" *ngIf="form.get('id').dirty && !form.get('id').valid">
+            <ul>
+              <li *ngIf="form.get('id').hasError('required')" i18n>Field is required</li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="d('Close click')" i18n>Cancel</button>
+      <button type="button" class="btn btn-success" [ladda]="isLoading" [disabled]="form.invalid" (click)="linkKiosk()" i18n>
+        {{modalOptions.successButton}}
+      </button>
+    </div>
+  </ng-template>
+  

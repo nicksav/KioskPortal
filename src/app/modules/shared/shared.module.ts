@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LaddaModule } from 'angular2-ladda';
 
 import { DpTableModule } from './dp-table';
+import { DpSelectModule } from './dp-select';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
@@ -12,6 +13,7 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
   imports: [
     CommonModule,
     DpTableModule,
+    DpSelectModule,
     LaddaModule,
     FormsModule,
     ReactiveFormsModule,
@@ -23,6 +25,7 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
   ],
   exports: [
     DpTableModule,
+    DpSelectModule,
     SearchInputComponent,
     ProgressBarComponent
   ]

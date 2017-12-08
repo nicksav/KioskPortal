@@ -16,32 +16,32 @@
         </div>
       
         <div class="card-block">
-          <div class="detailsHeader">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label class="form-label" i18n>Location Name</label>
-                  <input value="{{selectedLocation?.name}}" class="form-control" disabled>
+          <form [formGroup]="form" name="form">
+            <div class="detailsHeader">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="form-label" i18n>Location Name</label>
+                    <input formControlName="name" class="form-control" [attr.disabled]="(editMode|async)?null:''">
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label class="form-label" i18n>Location Key</label>
-                  <input value="{{selectedLocation?.locationKey}}" class="form-control" disabled>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="form-label" i18n>Location Key</label>
+                    <input formControlName="locationKey" class="form-control" [attr.disabled]="(editMode|async)?null:''">
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-      
+          </form>
           <div class="detailsBody nav-tabs-horizontal">
             <ul class="nav nav-tabs justify-content-start" >
-              <li class="nav-item"><a class="nav-link active" [ngClass]="{'active': tab==='kiosks'}" (click)="tab = 'users'" i18n>Users</a></li>
+              <li class="nav-item"><a class="nav-link active" [ngClass]="{'active': tab==='kiosks'}" (click)="tab ='kiosks'" i18n>Kiosks</a></li>
             </ul>
           </div>
-          <div class="tContent" [ngSwitch]="tab" *ngIf="selectedLocation">
-
+          <div class="tContent" [ngSwitch]="tab">
+            <location-kiosks *ngSwitchCase="'kiosks'"></location-kiosks>
           </div>
-      
         </div>
       </section>
       

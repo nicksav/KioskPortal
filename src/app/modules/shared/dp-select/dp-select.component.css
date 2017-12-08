@@ -1,0 +1,12 @@
+:host /deep/ .ui-select-container .btn.btn-secondary, .show > .btn.btn-secondary {
+    font-family: "PT Sans", sans-serif;
+    padding: 0.78rem 1.14rem;
+    border-color: #e4e9f0;
+    background-color: #ffffff;
+    line-height: 1.25;
+    color: #74708d !important;
+}
+
+:host /deep/ .ui-select-container .ui-select-toggle i {
+    font-size: 1rem !important;
+}

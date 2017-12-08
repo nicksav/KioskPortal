@@ -23,5 +23,11 @@ export class KioskService {
       .map((res) => KioskMapper.prepareListData(res));
   }
 
+  public getListByLocation(locationId, params = new HttpParams()) {
+    return this._http
+      .get(`/locations/${locationId}/kiosks`, { params })
+      .map((res) => KioskMapper.prepareListData(res));
+  }
+
 
 }
