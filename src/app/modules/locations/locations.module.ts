@@ -12,6 +12,7 @@ import { routes } from './locations.routing';
 import { LocationObserverService } from './location/location-observer.service';
 import { LocationGridComponent } from './grid/location-grid.component';
 import { SharedModule } from '../shared/shared.module';
+import { LocationKiosksComponent } from './kiosks/location-kiosks.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     LocationsComponent,
     LocationGridComponent,
-    LocationComponent
+    LocationComponent,
+    LocationKiosksComponent
   ],
   providers: [
     LocationObserverService

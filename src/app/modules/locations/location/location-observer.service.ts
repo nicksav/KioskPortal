@@ -13,6 +13,7 @@ export class LocationObserverService {
   public location$ = this.locationSource.asObservable();
   public editMode$ = this.editMode.asObservable();
   public storage$ = this.storageSource.asObservable();
+  public kiosks$ = this.kiosksSource.asObservable();
 
   public storage: any;
 
