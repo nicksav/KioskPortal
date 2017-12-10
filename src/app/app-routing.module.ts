@@ -11,11 +11,13 @@ const routes: Routes = [
   },
   {
     path: 'locations',
-    loadChildren: 'app/modules/locations/locations.module#LocationsModule'
+    loadChildren: 'app/modules/locations/locations.module#LocationsModule',
+    pathMatch: 'full'
   },
   {
     path: '**',
-    loadChildren: 'app/modules/loader/loader.module#LoaderModule'
+    loadChildren: 'app/modules/loader/loader.module#LoaderModule',
+    pathMatch: 'full'
   }];
 
 @NgModule({
