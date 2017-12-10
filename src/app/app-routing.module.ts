@@ -7,18 +7,15 @@ import { LoaderComponent } from '../app/modules/loader/loader.component'
 const routes: Routes = [
   { 
     path: '',
-    loadChildren: 'app/modules/loader/loader.module#LoaderModule',
-    pathMatch: 'full'
+    loadChildren: 'app/modules/loader/loader.module#LoaderModule'
   },
   {
     path: 'locations',
-    loadChildren: 'app/modules/locations/locations.module#LocationsModule',
-    pathMatch: 'full'
+    loadChildren: 'app/modules/locations/locations.module#LocationsModule'
   },
   {
     path: '**',
-    loadChildren: 'app/modules/loader/loader.module#LoaderModule',
-    pathMatch: 'full'
+    loadChildren: 'app/modules/loader/loader.module#LoaderModule'
   }];
 
 @NgModule({
