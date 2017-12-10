@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component'
 import { LoaderComponent } from '../app/modules/loader/loader.component'
 
+
 const routes: Routes = [
   { 
     path: '',
