@@ -188,7 +188,7 @@ export class LocationKiosksComponent extends BaseComponent implements OnInit {
     }
   }
 
-  public searchKiosks(searchValue?: string) {
+  public searchKiosks(searchValue: string = '') {
     const params = new HttpParams().set('offset', '0').set('text', searchValue);
 
     if (this.searchSub) {
