@@ -1,0 +1,31 @@
+<div class="form-group">
+  <label [for]="'file_' + id" class="form-label" i18n>{{label}}</label>
+  <div class="dropify-wrapper" [class.disabled]="readOnly" [class.uploading]="uploadMessage==='Uploading...' && !uploadError.length" 
+    ngFileDrop 
+    (uploadOutput)="onUploadOutput($event)" 
+    [uploadInput]="uploadInput">
+      <div class="dropify-message">
+        <i class="file-icon" *ngIf="uploadMessage!='Uploading...' && !uploadError.length && noFile"></i>
+        <i class="icon-check-ui uploadedFile" *ngIf="!noFile && !uploadError.length"></i>
+        <p>{{uploadMessage}}</p>
+        <p class="dropify-error" *ngIf="uploadError.length">{{uploadError}}</p>
+      </div>
+      <div class="dropify-errors-container">
+        <ul></ul>
+      </div>
+      <input class="dropify"
+        [id]="'file_' + id"
+        type="file" 
+        ngFileSelect
+        name="file"
+        (uploadOutput)="onUploadOutput($event)" 
+        [uploadInput]="uploadInput"
+        [options]="options"
+        [disabled]="readOnly">
+      <div class="dropify-preview" style="display: block;" *ngIf="value">
+        <span class="dropify-render">
+          <img [src]="value">
+        </span>
+      </div>
+  </div>
+</div>
