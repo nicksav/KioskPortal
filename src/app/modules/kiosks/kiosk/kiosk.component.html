@@ -1,0 +1,68 @@
+<section class="card">
+  <div class="card-header">
+      <span class="cat__core__title">
+          <a [routerLink]="'../'">
+            <i class="icon-chevron-left" style="font-weight:bold;"></i>
+            <ng-container i18n>Kiosks</ng-container>&nbsp;|&nbsp;
+          </a>
+      </span>
+      <span class="cat__core__title">
+        {{selectedKiosk?.name}}
+      </span>
+      <div *ngIf="acl.isAllow('canUseKiosk')" class="d-inline-block pull-right">
+          <a class="btn btn-sm btn-success" *ngIf="!(editMode | async)" (click)="editMode=true" i18n>Edit</a>
+          <a class="btn btn-sm btn-success" *ngIf="editMode | async" (click)="save()" [ladda]="isLoading" i18n>Save</a>
+      </div>
+  </div>
+  <div class="card-block">
+    <form [formGroup]="form" name="form">
+      <div class="detailsHeader">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="form-label" i18n>Kiosk Name</label>
+              <input formControlName="name" class="form-control" [attr.disabled]="(editMode|async)?null:''">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="form-label" i18n>Screen Name</label>
+              <input formControlName="screenName" class="form-control" [attr.disabled]="(editMode|async)?null:''">
+            </div>
+          </div>
+        </div> 
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="form-label" i18n>Phone Number</label>
+              <input formControlName="kioskPhoneNumber" class="form-control" [attr.disabled]="(editMode|async)?null:''">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label class="form-label" i18n>Help Phone</label>
+              <input formControlName="helpPhone" class="form-control" [attr.disabled]="(editMode|async)?null:''">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group help-info">
+              <label class="form-label" i18n>Help Info</label>
+              <quill-editor formControlName="helpInfo" [modules]="quillModules" [readOnly]="!(editMode|async)"></quill-editor>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <file-uploader [label]="'Logo'" formControlName="logoURL" [readOnly]="!(editMode|async)"></file-uploader>
+            </div>
+            <div class="col-sm-6">
+                <file-uploader [label]="'Map'" formControlName="mapURL"  [readOnly]="!(editMode|async)"></file-uploader>
+            </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+  
