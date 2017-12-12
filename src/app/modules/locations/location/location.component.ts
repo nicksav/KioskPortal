@@ -10,7 +10,7 @@ import { LocationForm } from './location-form.config';
 import { AclService } from '../../../auth/acl.service';
 
 @Component({
-  selector: 'cat-page',
+  selector: 'location',
   templateUrl: './location.component.html',
 })
 
