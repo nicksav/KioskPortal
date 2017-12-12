@@ -12,6 +12,20 @@ export class KioskService {
     .map((res) => KioskMapper.prepareData(res));
   }
 
+  public create(body) {
+    return this._http
+      .post(`/kiosks`, body);
+  }
+
+  public getOne(id, params = new HttpParams()) {
+    return this._http.get(`/kiosks/${id}`, { params })
+      .map((res) => KioskMapper.prepareData(res));
+  }
+
+  public update(id, body) {
+    return this._http.put(`/kiosks/${id}`, body);
+  }
+
   public getCallToken(){
     return this._http.get('/Kiosks/twillio/token')
     .map((res) => KioskMapper.prepareData(res));
@@ -21,6 +35,10 @@ export class KioskService {
     return this._http
       .get(`/Kiosks`, { params })
       .map((res) => KioskMapper.prepareListData(res));
+  }
+
+  public deleteItem(id) {
+    return this._http.delete(`/kiosks/${id}`);
   }
 
   public getListByLocation(locationId, params = new HttpParams()) {

@@ -32,6 +32,10 @@ a:hover, a:active, a:focus {
     text-decoration: none;
 }
 
+i {
+    font-size: 1.2rem;
+}
+
 .pull-right {
     float: right;
 }
@@ -1141,4 +1145,10 @@ span.input-group-addon {
 .ui-select-toggle{
     box-shadow:none !important;
     -webkit-box-shadow:none !important;
+}
+
+/*QUILL*/
+
+.ql-container.ql-disabled {
+    background-color: #eef0f4;
 }
