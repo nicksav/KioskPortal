@@ -12,7 +12,7 @@ import { AuthService } from '../../auth/auth.service';
 export class LoaderComponent implements OnInit {
 
     constructor(
-    private _auth: AuthService, 
+    private _auth: AuthService,
     private _router: Router) {
 
     }
@@ -26,12 +26,12 @@ export class LoaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+
         if (!this._auth.isAuthenticated())
             parent.postMessage({loaded: true}, "*");
-        else 
-            this._router.navigate(['/home']);
-        
+        else
+            this._router.navigate(['/kiosks']);
+
     }
 
 }
