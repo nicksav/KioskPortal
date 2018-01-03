@@ -30,7 +30,7 @@ export class LoaderComponent implements OnInit {
         if (!this._auth.isAuthenticated())
             parent.postMessage({loaded: true}, "*");
         else
-            this._router.navigate(['/kiosks']);
+            this._router.navigate(['/home']);
 
     }
 
