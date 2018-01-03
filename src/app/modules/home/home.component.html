@@ -1,7 +1,45 @@
-<section class="card">
-  <div>
-    <button class="btn btn-secondary" [routerLink]="['/kiosks']">Kiosks</button>
-    <button class="btn btn-secondary" [routerLink]="['/locations']">Locations</button>
-    <img class="kiosk-img" src="./assets/images/kiosk.svg" alt="">
-  </div>
+<section class="home-page-container">
+    <div class="sections-wrapper">
+        <!-- Logo Section Start -->
+        <div class="logo-wrapper">
+            <div class="logo-img-wrapper">
+                <img class="logo-img" src="./assets/images/home-page/section-logo.svg" alt="Safety Kiosks">
+            </div>
+            <h2 class="logo-text">Safety Kiosks</h2>
+        </div>
+        <!-- Logo Section Start -->
+
+        <!-- Items Container -->
+        <div class="items-wrapper">
+
+            <!-- Item Wrapper Start -->
+            <div class="item-wrapper" [routerLink]="['/kiosks']">
+                <div class="item-icon-wrapper">
+                    <img class="item-icon" src="./assets/images/home-page/kiosks-icon.png" alt="Kiosks">
+                </div>
+                <span class="item-label">Kiosks</span>
+            </div>
+            <!-- Item Wrapper End -->
+
+            <!-- Item Wrapper Start -->
+            <div class="item-wrapper" [routerLink]="['/locations']">
+                <div class="item-icon-wrapper">
+                    <img class="item-icon" src="./assets/images/home-page/locations-icon.svg" alt="Locations">
+                </div>
+                <span class="item-label">Locations</span>
+            </div>
+            <!-- Item Wrapper End -->
+
+            <!-- Item Wrapper Start -->
+            <div class="item-wrapper">
+                <div class="item-icon-wrapper">
+                    <img class="item-icon" src="./assets/images/home-page/faq-icon.svg" alt="FAQ">
+                </div>
+                <span class="item-label">FAQ</span>
+            </div>
+            <!-- Item Wrapper End -->
+
+        </div>
+        <!-- Items Container End -->
+    </div>
 </section>
