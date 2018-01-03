@@ -1,8 +1,10 @@
 <section class="card" *ngIf="!selectedLocation">
         <div class="card-header">
             <span class="cat__core__title">
-              <a  i18n>Locations</a>
-              <a> | </a>
+                <a [routerLink]="'../'">
+                  <i class="icon-chevron-left" style="font-weight:bold;"></i>
+                  <ng-container i18n>Locations</ng-container>&nbsp;|&nbsp;
+                </a>
             </span>
           <search-input (ngModelChange)="searchText = $event" [(ngModel)]="searchText" ngDefaultControl></search-input>
           <div class="pull-right">
