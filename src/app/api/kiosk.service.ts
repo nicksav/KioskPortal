@@ -48,4 +48,8 @@ export class KioskService {
   }
 
 
+  public pairKiosk(body: object) {
+    return this._http.put(`/setup/${body['pairingCode']}/kiosk/${body['kioskId']}`, body);
+  }
+
 }

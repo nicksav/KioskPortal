@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component'
-import { LoaderComponent } from '../app/modules/loader/loader.component'
+import { AppComponent } from './app.component';
+import { LoaderComponent } from '../app/modules/loader/loader.component';
 
 
 const routes: Routes = [
@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'locations',
     loadChildren: 'app/modules/locations/locations.module#LocationsModule'
+  },
+  {
+    path: 'faq',
+    loadChildren: 'app/modules/faq/faq.module#FAQModule'
   },
   {
     path: '**',

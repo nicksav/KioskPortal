@@ -1,0 +1,29 @@
+<section class="faq-page-container">
+    <div class="sections-wrapper">
+        <div class="logo-wrapper">
+            <div class="logo-img-wrapper">
+                <i class="item-icon icon-broadcast"></i>
+            </div>
+            <h2 class="logo-text">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- FAQ Item Start -->
+                        <div class="faq-item-wrapper" *ngFor="let faq of faqItems" [ngClass]="{'active': faq.question == openTab}">
+                            <div class="faq-header" (click)="toggleTab(faq.question, $event)">
+                                <h3 class="faq-label">{{faq.question}}</h3>
+                                <i class="faq-icon icon-chevron-left"></i>
+                            </div>
+                            <div class="faq-content-wrapper" (click)="$event.stopPropagation()">
+                                <p class="faq-content">{{faq.answer}}</p>
+                            </div>
+                        </div>
+                        <!-- FAQ Item End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

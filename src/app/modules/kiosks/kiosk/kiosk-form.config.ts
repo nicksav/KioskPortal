@@ -10,3 +10,9 @@ export const KioskForm = {
   helpPhone: [''],  
   helpInfo: [''],
 };
+
+export const PairKioskForm = {
+  code: ['', Validators.compose([Validators.required, Validators.pattern('^(0|[0-9][0-9]*)$'), Validators.minLength(6), Validators.maxLength(6)])]
+};
+
+

@@ -1,0 +1,91 @@
+.faq-page-container {
+    background-color: #f9f9f9;
+    height: 100%;
+    .sections-wrapper {
+        width: 100%;
+        padding: 50px 0;
+        .logo-wrapper {
+            margin-bottom: 45px;
+            text-align: center;
+            .logo-img-wrapper {
+                width: 138px;
+                height: 128px;
+                display: inline-block;
+                margin-bottom: 10px;
+                .item-icon {
+                    font-size: 120px;
+                    color: #e4bf05;
+                }
+            }
+            .logo-text {
+                font-size: 36px;
+                letter-spacing: 1.4px;
+                color: #0c2313;
+                font-weight: 500;
+                max-width: 310px;
+                margin: 0 auto;
+                line-height: 46px;
+            }
+        }
+        .faq-wrapper {
+            width: 100%;
+            .faq-item-wrapper {
+                width: 100%;
+                border-radius: 4px;
+                background-color: #ffffff;
+                border: solid 1px #e2e1da;
+                margin-bottom: 10px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                &.active {
+                    .faq-header .faq-icon {
+                        transform: rotate(90deg);
+                    }
+                    .faq-content-wrapper {
+                        height: auto;
+                    }
+                }
+                .faq-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 15px;
+                    cursor: pointer;
+                    .faq-label {
+                        letter-spacing: 0.8px;
+                        color: #0c2313;
+                        font-size: 20px;
+                        font-weight: 500;
+                        margin: 0;
+                    }
+                    .faq-icon {
+                        font-weight: 700;
+                        font-size: 20px;
+                        transform: rotate(-90deg);
+                    }
+                }
+                .faq-content-wrapper {
+                    width: 100%;
+                    text-align: left;
+                    padding: 0;
+                    height: 0;
+                    overflow: hidden;
+                    .faq-content {
+                        color: #8c8c8c;
+                        font-size: 15px;
+                        letter-spacing: 0.3px;
+                        margin: 0;
+                        padding: 0 15px 15px 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-height: 550px) {
+    .faq-page-container {
+        height: auto;
+    }
+}

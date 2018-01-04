@@ -1,68 +1,141 @@
 <section class="card">
-  <div class="card-header">
-      <span class="cat__core__title">
+    <div class="card-header">
+        <span class="cat__core__title">
           <a [routerLink]="'../'">
             <i class="icon-chevron-left" style="font-weight:bold;"></i>
             <ng-container i18n>Kiosks</ng-container>&nbsp;|&nbsp;
           </a>
       </span>
-      <span class="cat__core__title">
+        <span class="cat__core__title">
         {{selectedKiosk?.name}}
       </span>
-      <div *ngIf="acl.isAllow('canUseKiosk')" class="d-inline-block pull-right">
-          <a class="btn btn-sm btn-success" *ngIf="!(editMode | async)" (click)="editMode=true" i18n>Edit</a>
-          <a class="btn btn-sm btn-success" *ngIf="editMode | async" (click)="save()" [ladda]="isLoading" i18n>Save</a>
-      </div>
-  </div>
-  <div class="card-block">
-    <form [formGroup]="form" name="form">
-      <div class="detailsHeader">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label class="form-label" i18n>Kiosk Name</label>
-              <input formControlName="name" class="form-control" [attr.disabled]="(editMode|async)?null:''">
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label class="form-label" i18n>Screen Name</label>
-              <input formControlName="screenName" class="form-control" [attr.disabled]="(editMode|async)?null:''">
-            </div>
-          </div>
-        </div> 
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label class="form-label" i18n>Phone Number</label>
-              <input formControlName="kioskPhoneNumber" class="form-control" [attr.disabled]="(editMode|async)?null:''">
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label class="form-label" i18n>Help Phone</label>
-              <input formControlName="helpPhone" class="form-control" [attr.disabled]="(editMode|async)?null:''">
-            </div>
-          </div>
+        <div *ngIf="acl.isAllow('canUseKiosk')" class="d-inline-block pull-right btn-margin">
+            <a class="btn btn-sm btn-success" *ngIf="!(editMode | async)" (click)="editMode=true" i18n>Edit</a>
+            <a class="btn btn-sm btn-success" *ngIf="editMode | async" (click)="save()" [ladda]="isLoading" i18n>Save</a>
         </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="form-group help-info">
-              <label class="form-label" i18n>Help Info</label>
-              <quill-editor formControlName="helpInfo" [modules]="quillModules" [readOnly]="!(editMode|async)"></quill-editor>
-            </div>
-          </div>
+        <div class="d-inline-block pull-right btn-margin">
+            <a class="btn btn-sm btn-primary" (click)="pairKioskModal()" href="javascript: void(0);">Pair Kiosk</a>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <file-uploader [label]="'Logo'" formControlName="logoURL" [readOnly]="!(editMode|async)"></file-uploader>
+    </div>
+    <div class="card-block">
+        <form [formGroup]="form" name="form">
+            <div class="detailsHeader">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label" i18n>Kiosk Name</label>
+                            <input formControlName="name" class="form-control" [attr.disabled]="(editMode|async)?null:''">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label" i18n>Screen Name</label>
+                            <input formControlName="screenName" class="form-control" [attr.disabled]="(editMode|async)?null:''">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label" i18n>Phone Number</label>
+                            <input formControlName="kioskPhoneNumber" class="form-control" [attr.disabled]="(editMode|async)?null:''">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="form-label" i18n>Help Phone</label>
+                            <input formControlName="helpPhone" class="form-control" [attr.disabled]="(editMode|async)?null:''">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group help-info">
+                            <label class="form-label" i18n>Help Info</label>
+                            <quill-editor formControlName="helpInfo" [modules]="quillModules" [readOnly]="!(editMode|async)"></quill-editor>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <file-uploader [label]="'Logo'" formControlName="logoURL" [readOnly]="!(editMode|async)"></file-uploader>
+                    </div>
+                    <div class="col-sm-6">
+                        <file-uploader [label]="'Map'" formControlName="mapURL" [readOnly]="!(editMode|async)"></file-uploader>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-6">
-                <file-uploader [label]="'Map'" formControlName="mapURL"  [readOnly]="!(editMode|async)"></file-uploader>
-            </div>
-        </div>
-      </div>
-    </form>
-  </div>
+        </form>
+    </div>
 </section>
-  
+
+<ng-template #pairModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">{{modalOptions.title}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+        <ng-container *ngTemplateOutlet="formPairKioskTemplate"></ng-container>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="d('Close click')" i18n>Cancel</button>
+        <button type="button" class="btn btn-success" [ladda]="isLoading" [disabled]="form.invalid" (click)="submitForm()">
+      {{modalOptions.successButton}}
+    </button>
+    </div>
+</ng-template>
+
+<ng-template #formPairKioskTemplate>
+    <form [formGroup]="form" name="form">
+        <div class="form-group">
+            <label for="code" class="form-label" i18n>Pairing Code</label>
+            <input class="form-control" id="code" formControlName="code">
+            <div class="form-control-error" *ngIf="form.get('code').dirty && !form.get('code').valid">
+                <ul>
+                    <li *ngIf="form.get('code').hasError('required')" i18n>Field is required</li>
+                </ul>
+                <ul>
+                    <li *ngIf="form.get('code').hasError('minlength') && !form.get('code').hasError('pattern')" i18n>Your code lenght should be at least 6 symbols!</li>
+                </ul>
+                <ul>
+                    <li *ngIf="form.get('code').hasError('maxlength') && !form.get('code').hasError('pattern')" i18n>Code max lenght 6 symbols!</li>
+                </ul>
+                <ul>
+                    <li *ngIf="form.get('code').hasError('pattern')" i18n>Please use only numbers in this field!</li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #successPairModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">{{modalOptions.title}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    <div class="modal-body">
+        <p class="margin-0">{{modalOptions.data}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="d('Close click')" i18n>Close</button>
+    </div>
+</ng-template>
+
+<ng-template #errorPairModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">{{modalOptions.title}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+  <span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div class="modal-body">
+        <p class="margin-0">{{modalOptions.data}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="d('Close click')" i18n>Close</button>
+    </div>
+</ng-template>

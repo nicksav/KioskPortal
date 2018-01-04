@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { remove } from 'lodash';
@@ -7,7 +7,11 @@ import { ApiService } from '../../../api/api.service';
 import { BaseComponent } from '../../shared/helpers/base.component';
 import { KioskObserverService } from './kiosk-observer.service';
 import { KioskForm } from './kiosk-form.config';
+import { PairKioskForm } from './kiosk-form.config';
 import { AclService } from '../../../auth/acl.service';
+import { AuthService } from '../../../auth/auth.service';
+
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'kiosk-page',
@@ -41,11 +45,20 @@ export class KioskComponent extends BaseComponent implements OnInit {
     ]
   };
 
+  // Pair Modal
+  public modalOptions;
+  public modalRef;
+  @ViewChild('pairModal') private pairModal;
+  @ViewChild('successPairModal') private successPairModal;
+  @ViewChild('errorPairModal') private errorPairModal;
+
   constructor(public acl: AclService,
               private _api: ApiService,
               private _formBuilder: FormBuilder,
               private _observer: KioskObserverService,
-              private _route: ActivatedRoute) { 
+              private _modalService: NgbModal,
+              private _route: ActivatedRoute,
+              private _auth: AuthService,) {
     super();
     this.form = this._formBuilder.group(KioskForm);
     this.selectedKiosk = _observer.storage;
@@ -103,6 +116,82 @@ export class KioskComponent extends BaseComponent implements OnInit {
           }
         );
     }
+  }
+
+  public pairKioskModal() {
+    this.modalOptions = {
+      type: 'kiosk',
+      title: 'Pair Kiosk',
+      successMessage: 'Kiosk has been successfully paired!',
+      successButton: 'Pair'
+    };
+    this.form = this._formBuilder.group(PairKioskForm);
+    this.modalRef = this._modalService.open(this.pairModal);
+    this.modalRef.result.then(
+      () => {
+        this.form.reset();
+      },
+      () => {
+        this.form.reset();
+      }
+    );
+  }
+
+  public submitForm() {
+    if (this.form.valid) {
+      let data = Object.assign({}, this.form.value);
+      this.isLoading = true;
+      data = this.newPairData(data);
+      let request = this._api.kiosk.pairKiosk(data);
+      let sub = request
+        .subscribe(
+          (res) => {
+            this._observer.emit(this.modalOptions.type, res);
+            this.modalRef.close();
+            this.modalRef = null;
+            this.isLoading = false;
+            sub.unsubscribe();
+            this.openPairModalTemplate({'title': 'Pair Success', 'content': `The Kiosk "${this.selectedKiosk['name']}" has been successfully paired!`});
+          },
+          (err) => {
+            // let {userMessage} = JSON.parse(err._body);
+            // if (userMessage) {
+              
+            // }
+            this.modalRef.close();
+            this.modalRef = null;
+            this.isLoading = false;
+            this.openPairModalTemplate({'title': 'Pair Error', 'content': 'Error occurred. Please try again later.'});
+          }
+        );
+    }
+  }
+
+  private newPairData(data) {
+    const newData = {
+      'pairingCode': data.code,
+      'kioskId': this.selectedKiosk['id'],
+      'token': this._auth.getToken(),
+      'id': 0
+    }
+    return newData;
+  }
+
+  openPairModalTemplate(data) {
+    this.modalOptions = {
+      type: 'kiosk',
+      title: data['title'],
+      data: data['content']
+    };
+    this.modalRef = this._modalService.open(this.successPairModal);
+    this.modalRef.result.then(
+      () => {
+        this.form.reset();
+      },
+      () => {
+        this.form.reset();
+      }
+    );
   }
 
 }

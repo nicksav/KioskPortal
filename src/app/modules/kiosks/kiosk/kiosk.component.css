@@ -1,4 +1,16 @@
 .form-group.help-info {
-  position: relative;
-  z-index: 10;
+    position: relative;
+    z-index: 10;
+}
+
+
+/* Modules */
+
+.btn-margin {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.margin-0 {
+    margin: 0;
 }
