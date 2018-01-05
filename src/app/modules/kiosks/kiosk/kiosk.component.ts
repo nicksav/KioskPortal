@@ -49,8 +49,7 @@ export class KioskComponent extends BaseComponent implements OnInit {
   public modalOptions;
   public modalRef;
   @ViewChild('pairModal') private pairModal;
-  @ViewChild('successPairModal') private successPairModal;
-  @ViewChild('errorPairModal') private errorPairModal;
+  @ViewChild('pairResultModalTemplate') private pairResultModalTemplate;
 
   constructor(public acl: AclService,
               private _api: ApiService,
@@ -178,7 +177,7 @@ export class KioskComponent extends BaseComponent implements OnInit {
       title: data['title'],
       data: data['content']
     };
-    this.modalRef = this._modalService.open(this.successPairModal);
+    this.modalRef = this._modalService.open(this.pairResultModalTemplate);
     this.modalRef.result.then(
       () => {
         this.form.reset();

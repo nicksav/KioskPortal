@@ -104,27 +104,12 @@
     </form>
 </ng-template>
 
-<ng-template #successPairModal let-c="close" let-d="dismiss">
+<ng-template #pairResultModalTemplate let-c="close" let-d="dismiss">
     <div class="modal-header">
         <h4 class="modal-title">{{modalOptions.title}}</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
-    </div>
-    <div class="modal-body">
-        <p class="margin-0">{{modalOptions.data}}</p>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="d('Close click')" i18n>Close</button>
-    </div>
-</ng-template>
-
-<ng-template #errorPairModal let-c="close" let-d="dismiss">
-    <div class="modal-header">
-        <h4 class="modal-title">{{modalOptions.title}}</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-  <span aria-hidden="true">&times;</span>
-</button>
     </div>
     <div class="modal-body">
         <p class="margin-0">{{modalOptions.data}}</p>
