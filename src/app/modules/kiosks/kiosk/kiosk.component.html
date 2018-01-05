@@ -95,14 +95,8 @@
             <div class="form-control-error" *ngIf="form.get('code').dirty && !form.get('code').valid">
                 <ul>
                     <li *ngIf="form.get('code').hasError('required')" i18n>Field is required</li>
-                </ul>
-                <ul>
                     <li *ngIf="form.get('code').hasError('minlength') && !form.get('code').hasError('pattern')" i18n>Your code lenght should be at least 6 symbols!</li>
-                </ul>
-                <ul>
                     <li *ngIf="form.get('code').hasError('maxlength') && !form.get('code').hasError('pattern')" i18n>Code max lenght 6 symbols!</li>
-                </ul>
-                <ul>
                     <li *ngIf="form.get('code').hasError('pattern')" i18n>Please use only numbers in this field!</li>
                 </ul>
             </div>

@@ -3,7 +3,28 @@
     height: 100%;
     .sections-wrapper {
         width: 100%;
-        padding: 50px 0;
+        padding: 20px 0 50px 0;
+        .goback-wraper {
+            width: 100%;
+            display: block;
+            text-align: left;
+            margin-bottom: 45px;
+            .goback-link {
+                display: inline-flex;
+                align-items: center;
+                font-size: 15px;
+                color: #e4bf05;
+                transition: .3s ease;
+                outline: none;
+                .goback-icon {
+                    vertical-align: middle;
+                    font-weight: 700;
+                }
+                &:hover {
+                    color: #af9309;
+                }
+            }
+        }
         .logo-wrapper {
             margin-bottom: 45px;
             text-align: center;
@@ -52,6 +73,7 @@
                     align-items: center;
                     padding: 15px;
                     cursor: pointer;
+                    user-select: none;
                     .faq-label {
                         letter-spacing: 0.8px;
                         color: #0c2313;
@@ -84,7 +106,7 @@
     }
 }
 
-@media screen and (max-height: 550px) {
+@media screen and (max-height: 570px) {
     .faq-page-container {
         height: auto;
     }

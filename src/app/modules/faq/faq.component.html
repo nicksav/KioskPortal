@@ -1,15 +1,28 @@
 <section class="faq-page-container">
     <div class="sections-wrapper">
-        <div class="logo-wrapper">
-            <div class="logo-img-wrapper">
-                <i class="item-icon icon-broadcast"></i>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Go Back Start -->
+                    <div class="goback-wraper">
+                        <a class="goback-link" [routerLink]="['/home']"><i class="goback-icon icon-chevron-left"></i>Home</a>
+                    </div>
+                    <!-- Go Back End -->
+                </div>
             </div>
-            <h2 class="logo-text">Frequently Asked Questions</h2>
-        </div>
-        <div class="faq-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="logo-wrapper">
+                        <div class="logo-img-wrapper">
+                            <i class="item-icon icon-broadcast"></i>
+                        </div>
+                        <h2 class="logo-text">Frequently Asked Questions</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="faq-wrapper">
                         <!-- FAQ Item Start -->
                         <div class="faq-item-wrapper" *ngFor="let faq of faqItems" [ngClass]="{'active': faq.question == openTab}">
                             <div class="faq-header" (click)="toggleTab(faq.question, $event)">

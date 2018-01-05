@@ -154,14 +154,10 @@ export class KioskComponent extends BaseComponent implements OnInit {
             this.openPairModalTemplate({'title': 'Pair Success', 'content': `The Kiosk "${this.selectedKiosk['name']}" has been successfully paired!`});
           },
           (err) => {
-            // let {userMessage} = JSON.parse(err._body);
-            // if (userMessage) {
-              
-            // }
             this.modalRef.close();
             this.modalRef = null;
             this.isLoading = false;
-            this.openPairModalTemplate({'title': 'Pair Error', 'content': 'Error occurred. Please try again later.'});
+            this.openPairModalTemplate({'title': 'Pair Error', 'content': 'Error occurred. Please try again.'});
           }
         );
     }
@@ -171,8 +167,7 @@ export class KioskComponent extends BaseComponent implements OnInit {
     const newData = {
       'pairingCode': data.code,
       'kioskId': this.selectedKiosk['id'],
-      'token': this._auth.getToken(),
-      'id': 0
+      'token': this._auth.getToken()
     }
     return newData;
   }
