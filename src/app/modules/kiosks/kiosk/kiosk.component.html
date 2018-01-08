@@ -9,7 +9,7 @@
         <span class="cat__core__title">
         {{selectedKiosk?.name}}
       </span>
-        <div *ngIf="acl.isAllow('canUseKiosk')" class="d-inline-block pull-right btn-margin">
+        <div *ngIf="acl.isAllow('canUseKiosk')" class="d-inline-block pull-right">
             <a class="btn btn-sm btn-success" *ngIf="!(editMode | async)" (click)="editMode=true" i18n>Edit</a>
             <a class="btn btn-sm btn-success" *ngIf="editMode | async" (click)="save()" [ladda]="isLoading" i18n>Save</a>
         </div>
